@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import db from '@/lib/db';
 
 const posts = [
   {
@@ -21,11 +22,27 @@ const posts = [
   },
 ];
 
-export default function Home() {
+const truncateString = (str: string, len: number): string => {
+  if (str.length <= len) return str;
+  return str.slice(0, len) + '...';
+};
+
+const getData = async () => {
+  const posts = await db.post.findMany({
+    where: {
+      published: true,
+    },
+  });
+  return posts;
+};
+
+export default async function Home() {
+  const dbPosts = await getData();
+  console.log(dbPosts);
   return (
     <main className="w-full max-w-6xl px-8">
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 w-full gap-4">
-        {posts.map((post) => (
+        {dbPosts.map((post) => (
           <div className="rounded shadow-lg" key={post.id}>
             <div className="w-full">
               <Image
@@ -39,7 +56,7 @@ export default function Home() {
             </div>
             <div className="px-4 py-2">
               <h2 className="text-xl font-bold">{post.title}</h2>
-              <p>{post.content}</p>
+              <p>{truncateString(post.content || '', 50)}</p>
             </div>
           </div>
         ))}
