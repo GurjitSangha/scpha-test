@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="flex flex-col items-center justify-center">
-        <header className="w-full flex items-center justify-between py-6 px-8">
+        <header className="w-full max-w-6xl flex items-center justify-between py-6 px-8">
           <p className="text-2xl">PortLife</p>
           <p>All Posts</p>
         </header>
