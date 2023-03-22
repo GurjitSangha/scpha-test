@@ -1,26 +1,6 @@
 import Image from 'next/image';
 import db from '@/lib/db';
-
-const posts = [
-  {
-    id: '1',
-    hero: 'https://picsum.photos/300',
-    title: 'Post title',
-    content: 'Post body that can be longer than the title',
-  },
-  {
-    id: '2',
-    hero: 'https://picsum.photos/300',
-    title: 'Post title',
-    content: 'Post body that can be longer than the title',
-  },
-  {
-    id: '3',
-    hero: 'https://picsum.photos/300',
-    title: 'Post title',
-    content: 'Post body that can be longer than the title',
-  },
-];
+import Link from 'next/link';
 
 const truncateString = (str: string, len: number): string => {
   if (str.length <= len) return str;
@@ -38,12 +18,15 @@ const getData = async () => {
 
 export default async function Home() {
   const dbPosts = await getData();
-  console.log(dbPosts);
   return (
     <main className="w-full max-w-6xl px-8">
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 w-full gap-4">
         {dbPosts.map((post) => (
-          <div className="rounded shadow-lg" key={post.id}>
+          <Link
+            href={`/post/${post.id}`}
+            className="rounded shadow-lg  hover:scale-105 transition-transform"
+            key={post.id}
+          >
             <div className="w-full">
               <Image
                 src={post.hero}
@@ -58,7 +41,7 @@ export default async function Home() {
               <h2 className="text-xl font-bold">{post.title}</h2>
               <p>{truncateString(post.content || '', 50)}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </section>
     </main>

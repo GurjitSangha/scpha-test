@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import './globals.css';
 
 export const metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p className="text-2xl">PortLife</p>
           <div className="flex gap-4">
             <a className="hover:underline">New Post</a>
-            <a className="hover:underline">All Posts</a>
+            <Link href="/" className="hover:underline">
+              All Posts
+            </Link>
           </div>
         </header>
         {children}
