@@ -9,6 +9,7 @@ const getData = async () => {
     where: {
       published: true,
     },
+    orderBy: { createdAt: 'desc' },
   });
   return posts;
 };

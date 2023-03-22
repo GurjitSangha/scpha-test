@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, ReactEventHandler, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Modal from 'react-modal';
 import Input from './Input';
 import { createNewPost } from '@/lib/api';
@@ -30,7 +30,7 @@ const NewPost = () => {
     closeModal();
     setTitle('');
     setContent('');
-    setHero('');
+    setHero(cloudinaryImages[0]);
     router.push('/');
   };
 
@@ -74,7 +74,7 @@ const NewPost = () => {
               <select
                 placeholder="Image"
                 defaultValue={hero}
-                onSelect={(e: ChangeEvent<HTMLSelectElement>) => setHero(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => setHero(e.target.value)}
               >
                 {cloudinaryImages.map((img) => (
                   <option value={img} key={img}>
