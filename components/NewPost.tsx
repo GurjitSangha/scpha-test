@@ -34,12 +34,14 @@ const NewPost = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <button onClick={openModal}>+ New Post</button>
+      <button onClick={openModal} className="border border-blue-400 py-1 px-2 rounded">
+        + New Post
+      </button>
 
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        overlayClassName="bg-[rgba(0,0,0,0.3)] flex justify-center items-center absolute top-0 left-0 h-screen w-screen"
+        overlayClassName="bg-[rgba(0,0,0,0.3)] flex justify-center items-center absolute top-0 left-0 h-full w-screen"
         className="w-3/4 bg-white rounded-lg p-8"
       >
         <>

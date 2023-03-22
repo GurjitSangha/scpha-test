@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import db from '@/lib/db';
 import Link from 'next/link';
+import HeroSection from '@/components/HeroSection';
 
 const truncateString = (str: string, len: number): string => {
   if (str.length <= len) return str;
@@ -20,11 +21,12 @@ export default async function Home() {
   const dbPosts = await getData();
   return (
     <main className="w-full max-w-6xl px-8">
-      <section className="grid sm:grid-cols-2 lg:grid-cols-3 w-full gap-4">
+      <HeroSection />
+      <section className="grid sm:grid-cols-2 lg:grid-cols-3 w-full gap-4 mb-8" id="posts">
         {dbPosts.map((post) => (
           <Link
             href={`/post/${post.id}`}
-            className="rounded shadow-lg  hover:scale-105 transition-transform"
+            className="rounded shadow-lg hover:scale-105 transition-transform"
             key={post.id}
           >
             <div className="w-full">

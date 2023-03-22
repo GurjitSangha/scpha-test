@@ -11,13 +11,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="flex flex-col items-center justify-center">
+        <div id="modal"></div>
         <header className="w-full max-w-6xl flex items-center justify-between py-6 px-8">
           <p className="text-2xl">PortLife</p>
-          <div className="flex gap-4">
-            {/* <a className="hover:underline">New Post</a> */}
-            <div id="modal"></div>
+          <div className="flex gap-4 items-center">
             <NewPost />
-            <Link href="/" className="hover:underline">
+            <Link href="/#posts" className="hover:underline">
               All Posts
             </Link>
           </div>
