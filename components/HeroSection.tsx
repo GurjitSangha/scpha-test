@@ -8,7 +8,7 @@ export default function HeroSection() {
               Keep up with all the happenings at SCPHA
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Welcome to PortLife, the place to find out what's going on at the SCPHA
+              Welcome to PortLife, the place to find out what&apos;s going on at the SCPHA
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
