@@ -8,7 +8,13 @@ const truncateString = (str: string, len: number): string => {
   return str.slice(0, len) + '...';
 };
 
-export default function PostCard({ id, title, content, hero }) {
+interface Props {
+  id: string;
+  title: string;
+  content: string;
+  hero: string;
+}
+export default function PostCard({ id, title, content, hero }: Props) {
   const cldImage = new CloudinaryImage(hero, {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   }).resize(fill().width(500).height(500));

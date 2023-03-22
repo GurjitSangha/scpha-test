@@ -1,7 +1,7 @@
 import db from '@/lib/db';
 import Image from 'next/image';
 
-const getData = async (id) => {
+const getData = async (id: string) => {
   const post = await db.post.findUnique({
     where: {
       id,
@@ -13,7 +13,10 @@ const getData = async (id) => {
   return post;
 };
 
-export default async function PostPage({ params }) {
+interface Props {
+  params: { id: string };
+}
+export default async function PostPage({ params }: Props) {
   const post = await getData(params.id);
 
   if (!post) {

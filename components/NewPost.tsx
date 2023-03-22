@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEvent, ReactEventHandler, useState } from 'react';
 import Modal from 'react-modal';
 import Input from './Input';
 import { createNewPost } from '@/lib/api';
@@ -19,7 +19,7 @@ const NewPost = () => {
   const [hero, setHero] = useState(cloudinaryImages[0]);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await createNewPost({
       title,
@@ -61,20 +61,20 @@ const NewPost = () => {
               placeholder="Title"
               type="text"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
             />
             <Input
               placeholder="Content"
               type="textarea"
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setContent(e.target.value)}
             />
             <div className="flex w-full justify-between">
               <p>Image:</p>
               <select
                 placeholder="Image"
                 defaultValue={hero}
-                onSelect={(e) => setHero(e.target.value)}
+                onSelect={(e: ChangeEvent<HTMLSelectElement>) => setHero(e.target.value)}
               >
                 {cloudinaryImages.map((img) => (
                   <option value={img} key={img}>
