@@ -8,7 +8,13 @@ import { useRouter } from 'next/navigation';
 
 Modal.setAppElement('#modal');
 
-const cloudinaryImages = ['cld-sample-2', 'cld-sample-3', 'cld-sample-4', 'cld-sample-5'];
+const cloudinaryImages = [
+  { value: 'cld-sample-2', desc: 'Dalmation' },
+  { value: 'cld-sample-2', desc: 'Mountains' },
+  { value: 'cld-sample-3', desc: 'Basketball' },
+  { value: 'cld-sample-4', desc: 'Dinner' },
+  { value: 'cld-sample-5', desc: 'Trainer' },
+];
 
 const NewPost = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -16,7 +22,7 @@ const NewPost = () => {
   const closeModal = () => setModalIsOpen(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [hero, setHero] = useState(cloudinaryImages[0]);
+  const [hero, setHero] = useState(cloudinaryImages[0].value);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +36,7 @@ const NewPost = () => {
     closeModal();
     setTitle('');
     setContent('');
-    setHero(cloudinaryImages[0]);
+    setHero(cloudinaryImages[0].value);
     router.push('/');
   };
 
@@ -77,8 +83,8 @@ const NewPost = () => {
                 onChange={(e: ChangeEvent<HTMLSelectElement>) => setHero(e.target.value)}
               >
                 {cloudinaryImages.map((img) => (
-                  <option value={img} key={img}>
-                    {img}
+                  <option value={img.value} key={img.value}>
+                    {img.desc}
                   </option>
                 ))}
               </select>
