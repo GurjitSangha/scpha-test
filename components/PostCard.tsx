@@ -11,15 +11,15 @@ const truncateString = (str: string, len: number): string => {
 export default function PostCard({ id, title, content, hero }) {
   const cldImage = new CloudinaryImage(hero, {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  }).resize(fill().width(300).height(300));
+  }).resize(fill().width(500).height(500));
 
   return (
     <Link href={`/post/${id}`} className="rounded shadow-lg hover:scale-105 transition-transform">
       <div className="w-full">
         <Image
           src={cldImage.toURL()}
-          width="300"
-          height="300"
+          width="500"
+          height="500"
           alt={title}
           sizes="100w"
           className="w-full h-auto"

@@ -8,13 +8,15 @@ import { useRouter } from 'next/navigation';
 
 Modal.setAppElement('#modal');
 
+const cloudinaryImages = ['cld-sample-2', 'cld-sample-3', 'cld-sample-4', 'cld-sample-5'];
+
 const NewPost = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [hero, setHero] = useState('');
+  const [hero, setHero] = useState(cloudinaryImages[0]);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -67,12 +69,20 @@ const NewPost = () => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            <Input
-              placeholder="Image Link"
-              type="text"
-              value={hero}
-              onChange={(e) => setHero(e.target.value)}
-            />
+            <div className="flex w-full justify-between">
+              <p>Image:</p>
+              <select
+                placeholder="Image"
+                defaultValue={hero}
+                onSelect={(e) => setHero(e.target.value)}
+              >
+                {cloudinaryImages.map((img) => (
+                  <option value={img} key={img}>
+                    {img}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
               type="submit"
               className="mt-8 border border-blue-500 text-blue-500 rounded-lg py-2 px-4"

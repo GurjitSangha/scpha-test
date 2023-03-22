@@ -25,7 +25,7 @@ export default async function Home() {
             id={post.id}
             title={post.title}
             content={post.content}
-            hero={'cld-sample-5'}
+            hero={post.hero}
           />
         ))}
       </section>
