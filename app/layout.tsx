@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import './globals.css';
+import NewPost from '@/components/NewPost';
 
 export const metadata = {
   title: 'PortLife',
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="w-full max-w-6xl flex items-center justify-between py-6 px-8">
           <p className="text-2xl">PortLife</p>
           <div className="flex gap-4">
-            <a className="hover:underline">New Post</a>
+            {/* <a className="hover:underline">New Post</a> */}
+            <div id="modal"></div>
+            <NewPost />
             <Link href="/" className="hover:underline">
               All Posts
             </Link>
